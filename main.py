@@ -1,6 +1,7 @@
 import pygame
 import random
 
+# Size of board
 board_width = 90
 board_height = 60
 screen_width = 600
