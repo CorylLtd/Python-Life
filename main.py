@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 
 # Size of board
 board_width = 90
@@ -89,7 +90,8 @@ def main():
         board.draw(screen)
         pygame.display.flip()
         generation_count += 1
-        if board.do_generation() < 60 or generation_count > 5000:
+        time.sleep(0.2)
+        if board.do_generation() < 60 or generation_count > 2000:
             board.randomize()
             generation_count = 0
 
