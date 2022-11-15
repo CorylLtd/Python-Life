@@ -3,10 +3,10 @@ import random
 import time
 
 # Size of board
-board_width = 90
-board_height = 60
-screen_width = 600
-screen_height = 400
+board_width = 180
+board_height = 120
+screen_width = 1200
+screen_height = 800
 
 
 class Board:
@@ -27,8 +27,9 @@ class Board:
         for row in range(0, self.height):
             for col in range(0, self.width):
                 if self.get_cell(row, col):
-                    display.fill((0, 64, 255),
-                                 rect=(self.x_scale * col, self.y_scale * row, self.x_scale, self.y_scale))
+                    display.fill(
+                        (0, 255, 64), rect=(self.x_scale * col, self.y_scale * row, self.x_scale, self.y_scale)
+                    )
 
     def randomize(self):
         for row in range(0, self.height):
@@ -71,9 +72,10 @@ class Board:
         self.board = new_board
         return changes
 
+
 def main():
     pygame.init()
-    pygame.display.set_caption('Life')
+    pygame.display.set_caption("Life")
 
     screen = pygame.display.set_mode((screen_width, screen_height))
 
@@ -90,13 +92,14 @@ def main():
         board.draw(screen)
         pygame.display.flip()
         generation_count += 1
-        time.sleep(0.2)
-        if board.do_generation() < 60 or generation_count > 2000:
+        # time.sleep(0.1)
+        if board.do_generation() < 60 or generation_count > 1800:
             board.randomize()
             generation_count = 0
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
 
 main()
